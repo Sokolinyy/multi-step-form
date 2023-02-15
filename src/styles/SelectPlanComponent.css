@@ -1,0 +1,97 @@
+.select-your-plan {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.select-your-plan article {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 50px 0px;
+}
+
+.options {
+  display: flex;
+}
+
+.option-price p {
+  margin: 5px 0;
+}
+
+#arcade-option, #advanced-option, #pro-option {
+  border: 2px solid gray;
+  background-color: transparent;
+  width: 160px;
+  height: 190px;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.choose-price {
+  margin: 0;
+  display: flex;
+  margin-top: 30px;
+  background-color: rgba(244, 244, 244, 0.5);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.dot-button {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 50px;
+  height: 25px;
+  width: 40px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 10px;
+}
+
+.dot {
+  background-color: black;
+  border-radius: 50px;
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: left 0.5s ease;
+}
+
+.dot.active {
+  left: 15px;
+}
+
+.next-back-button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 150px;
+}
+
+.next-back-button button {
+  cursor: pointer;
+}
+
+.go-back-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 17px;
+}
+
+.next-step-btn {
+  background-color: rgb(27, 92, 124);
+  border: none;
+  padding: 15px 30px;
+  color: white;
+  border-radius: 5px;
+}

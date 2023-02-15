@@ -1,0 +1,39 @@
+.side-bar-image {
+  height: 100vh;
+}
+
+.side-bar-container {
+  position: relative;
+}
+
+.side-bar-info-container {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.side-bar-info, .side-bar-info-2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-of-steps p {
+  padding: 5px 10px;
+  color: white;
+  border: 1px solid azure;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.number-of-steps {
+  display: block;
+  color: rgb(172, 172, 172);
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.sidebar-description h4 {
+  color: white;
+  margin: 0;
+}
