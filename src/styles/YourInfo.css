@@ -20,6 +20,14 @@
   margin-bottom: 0px;
 }
 
+.description p {
+  color: rgb(146, 146, 146);
+}
+
+form label {
+  color: rgb(27, 92, 124);
+}
+
 form input {
   margin-top: 10px;
   margin-bottom: 40px;
@@ -27,11 +35,11 @@ form input {
   padding: 12px;
   border-radius: 5px;
   outline: none;
-  border: 3px solid rgb(185, 185, 185);
+  border: 1px solid rgb(185, 185, 185);
 }
 
 form input:focus {
-  border: 3px solid rgb(46, 46, 135);
+  border: 1px solid rgb(22, 79, 107);
 }
 
 form button {

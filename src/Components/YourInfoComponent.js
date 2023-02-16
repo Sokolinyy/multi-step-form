@@ -46,6 +46,7 @@ function YourInfoComponent(props) {
               name="name"
               value={formData.name}
               onChange={handleChange}
+              placeholder="e.g Stephen King"
               required
             />
             {submitted && !formData.name && (
@@ -58,6 +59,7 @@ function YourInfoComponent(props) {
               type="email"
               id="email"
               name="email"
+              placeholder="e.g. stephenking@lorem.com"
               value={formData.email}
               onChange={handleChange}
               required
@@ -72,6 +74,7 @@ function YourInfoComponent(props) {
               type="tel"
               id="phone"
               name="phone"
+              placeholder="e.g. + 1 234 567 890"
               value={formData.phone}
               onChange={handleChange}
               required

@@ -8,8 +8,10 @@ import YourInfoComponent from "./Components/YourInfoComponent";
 import SelectPlanComponent from "./Components/SelectPlanComponent";
 import AddOnsComponent from "./Components/AddOnsComponent";
 import SummaryComponent from "./Components/SummaryComponent";
+import { UserContext } from "./UserContext";
 
 const App = () => {
+
   const [content, setContent] = useState("your-info");
 
   const handleYourInfoClick = () => {
@@ -36,17 +38,18 @@ const App = () => {
         handleAddOnsClick={handleAddOnsClick}
         handleSummaryClick={handleSummaryClick}
       />
+      <UserContext.Provider value={handleAddOnsClick}>
       {content === "your-info" && (
         <YourInfo
           handleSelectPLanClick={handleSelectPLanClick}
         />
       )}
       {content === "select-plan" && (
-        <SelectPlan 
-          handleYourInfoClick={handleYourInfoClick}
-          handleAddOnsClick={handleAddOnsClick}
+        <SelectPlan handleYourInfoClick={handleYourInfoClick}
+        handleAddOnsClick={handleAddOnsClick}
         />
       )}
+      </UserContext.Provider>
       {content === "add-ons" && <AddOns />}
       {content === "summary" && <Summary />}
     </main>

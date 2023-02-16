@@ -1,0 +1,11 @@
+.add-ons-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.add-ons-section p {
+  color: rgb(146, 146, 146);
+}
