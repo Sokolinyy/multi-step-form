@@ -19,14 +19,12 @@ function YourInfoComponent(props) {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // prevent refresh page
     setSubmitted(true);
 
+    // If form is done, then go to next page "Add-ons"
     if (formData.name && formData.email && formData.phone) {
-      // Submit the form
-      // ...
       props.handleSelectPLanClick();
-      // Call the function from another component
     }
   };
 

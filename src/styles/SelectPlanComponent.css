@@ -48,18 +48,18 @@
 }
 
 #arcade-option:focus {
-  border: 2px solid darkslateblue;
-  background-color: rgb(250, 250, 250);
+  border: 2px solid rgb(69, 59, 134);
+  background-color: rgba(217, 217, 252, 0.334);
 }
 
 #advanced-option:focus {
   border: 2px solid darkslateblue;
-  background-color: rgb(250, 250, 250);
+  background-color: rgba(217, 217, 252, 0.334);
 }
 
 #pro-option:focus {
   border: 2px solid darkslateblue;
-  background-color: rgb(250, 250, 250);
+  background-color: rgba(217, 217, 252, 0.334);
 }
 
 .choose-monthly-yearly {
