@@ -74,6 +74,7 @@ const AddOnsComponent = (props) => {
   }, [checkbox1, checkbox2, checkbox3])
   return (
     <section className="add-ons-section">
+      {/* Show SummaryComponent and hide AddOnsComponent */}
       {show && <SummaryComponent />}
       {/* If button "Go back" was clicked, return SelectPlanComponent */}
       {goBackButton && <SelectPlanComponent />}
@@ -246,7 +247,7 @@ const AddOnsComponent = (props) => {
                 <button className="go-back-btn" onClick={handleBackClick}>
                   Back
                 </button>
-                <button className="next-step-btn" onClick={handleShow}>
+                <button id="next-step-btn" onClick={handleShow}>
                   Next Step
                 </button>
               </div>
