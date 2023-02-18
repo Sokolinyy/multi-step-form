@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import SelectPlanComponent from "./SelectPlanComponent";
 import SummaryComponent from "./SummaryComponent.js";
@@ -59,9 +59,19 @@ const AddOnsComponent = (props) => {
 
   // Button 'Next Step' will set state 'show' to true
   const handleShow = () => {
-    setShow(true);
+      setShow(true);
   };
 
+  useEffect(() => {
+    const nextBtn = document.getElementById("next-step-btn")
+
+    if (checkbox1 || checkbox2 || checkbox3) {
+      nextBtn.textContent = "Next Step"
+    }
+    else {
+      nextBtn.textContent = "Skip"
+    }
+  }, [checkbox1, checkbox2, checkbox3])
   return (
     <section className="add-ons-section">
       {show && <SummaryComponent />}
@@ -153,7 +163,7 @@ const AddOnsComponent = (props) => {
               <button className="go-back-btn" onClick={handleBackClick}>
                 Back
               </button>
-              <button className="next-step-btn" onClick={handleShow}>
+              <button id="next-step-btn" onClick={handleShow}>
                 Next Step
               </button>
             </div>

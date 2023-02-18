@@ -44,7 +44,7 @@ input {
   justify-content: space-between;
 }
 
-.next-step-btn {
+#next-step-btn {
   background-color: rgb(27, 92, 124);
   border: none;
   padding: 15px 30px;

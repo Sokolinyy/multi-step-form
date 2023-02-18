@@ -50,7 +50,7 @@ const App = () => {
         />
       )}
       </UserContext.Provider>
-      {content === "add-ons" && <AddOns />}
+      {content === "add-ons" && <AddOnsComponent />}
       {content === "summary" && <Summary />}
     </main>
   );

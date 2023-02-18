@@ -43,28 +43,23 @@ const SelectPlanComponent = (props) => {
     seNextBtn(true);
   };
 
-  /* State for render Add-ons Component when user click on
-   "Arcade" "Advanced" or "Pro" !and! "Next step" button */
-  const [showAddOnsComponent, setShowAddOnsComponent] = useState(true)
-
   // State for going to add-ons page
   const [show, setShow] = useState(false)
 
   // Button 'Next Step' will set state 'show' to true
   const handleShow = () => {
-    setShow(true)
+      setShow(true)
   }
 
-  // Choose option coming from MonthlyPlan function
-  function handleChildStateChange(chooseOption) {
-    if (chooseOption && show) {
-      setShowAddOnsComponent(true)
-    };
+  const handleNextPage = (chooseOption) => {
+    if (chooseOption && handleShow) {
+      return <AddOnsComponent />
+    }
   }
 
   return (
     <section className="select-your-plan">
-      {show && <AddOnsComponent buttonValue={buttonValue}/>}
+      {show && <AddOnsComponent />}
       {/* Next Step button set "show" to true, and if so, hide all article 
       and display Add-ons component */}
       <article style={{display: show ? "none" : "flex"}}>
@@ -78,7 +73,7 @@ const SelectPlanComponent = (props) => {
           {plan === "monthly" && (
             <MonthlyPlan 
               nextBtn={nextBtn}
-              onStateChange={handleChildStateChange}
+              onStateChange={handleNextPage}
             />
           )}
         </div>
@@ -86,7 +81,7 @@ const SelectPlanComponent = (props) => {
         that change price to yearly tariff*/}
         {plan === "yearly" && (<YearlyPlan 
           nextBtn={nextBtn}
-          onStateChange={handleChildStateChange}
+          onStateChange={handleNextPage}
           />
         )}
         <div className="choose-monthly-yearly">
@@ -105,7 +100,7 @@ const SelectPlanComponent = (props) => {
           <button className="go-back-btn" onClick={props.handleYourInfoClick}>
             Go Back
           </button>
-          <button id="next-step-btn" onClick={handleShow}>
+          <button id="next-step-btn" onClick={handleNextPage}>
             Next Step
           </button>
         </div>
@@ -119,6 +114,8 @@ const SelectPlanComponent = (props) => {
 function MonthlyPlan(props) {
   /* Check if whatever of option was clicked - "Arcade" "Advanced" or "Pro" */
   const [clicked, setClicked] = useState(false);
+
+  console.log(clicked)
 
   function handleClick() {
     setClicked(true)
