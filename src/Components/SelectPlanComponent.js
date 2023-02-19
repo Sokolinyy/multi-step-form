@@ -85,7 +85,7 @@ const SelectPlanComponent = (props) => {
   return (
     <section className="select-your-plan">
       {show && (
-        <AddOnsComponent selectPlan={selectPlan} handleAdvancedClick={handleAdvancedClick} handleClick2={handleClick2} />
+        <AddOnsComponent selectPlan={selectPlan} optionValue={optionValue} />
       )}
       {/* Next Step button set "show" to true, and if so, hide all article 
       and display Add-ons component */}
