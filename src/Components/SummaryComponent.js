@@ -1,8 +1,11 @@
 import React from 'react'
 
-const SummaryComponent = () => {
+const SummaryComponent = (props) => {
+  const optionValue = props.optionValue
+  const selectPlan = props.selectPlan
+
   return (
-    <div><h1>AAAAAAAAAAAAAA</h1></div>
+    <div>{optionValue} {selectPlan}</div>
   )
 }
 

@@ -7,7 +7,7 @@ import "../styles/AddOnsComponent.css";
 
 const AddOnsComponent = (props) => {
   // Props from SelectPlanComponent that grab value "Yearly" or "Monthly"
-  const buttonValue = props.buttonValue;
+  const selectPlan = props.selectPlan;
 
   // State that changes button "Go back" from false to true
   const [goBackButton, setBackButton] = React.useState(false);
@@ -59,23 +59,30 @@ const AddOnsComponent = (props) => {
 
   // Button 'Next Step' will set state 'show' to true
   const handleShow = () => {
-      setShow(true);
+    setShow(true);
   };
 
+  const optionValue = props.optionValue;
+
   useEffect(() => {
-    const nextBtn = document.getElementById("next-step-btn")
+    const nextBtn = document.getElementById("next-step-btn");
 
     if (checkbox1 || checkbox2 || checkbox3) {
-      nextBtn.textContent = "Next Step"
+      nextBtn.textContent = "Next Step";
+    } else {
+      nextBtn.textContent = "Skip";
     }
-    else {
-      nextBtn.textContent = "Skip"
-    }
-  }, [checkbox1, checkbox2, checkbox3])
+  }, [checkbox1, checkbox2, checkbox3]);
+
   return (
     <section className="add-ons-section">
       {/* Show SummaryComponent and hide AddOnsComponent */}
-      {show && <SummaryComponent />}
+      {show && (
+        <SummaryComponent
+          optionValue={optionValue}
+          selectPlan={selectPlan}
+        />
+      )}
       {/* If button "Go back" was clicked, return SelectPlanComponent */}
       {goBackButton && <SelectPlanComponent />}
       {/* If goBackButton was clicked, hide this component and show SelectPlanComponent */}
@@ -89,7 +96,7 @@ const AddOnsComponent = (props) => {
         {/* Display different pages (to be more precise - changing the price)
         depending on what user choose,
         at SelectPlanComponent.js - Yearly plan or Monthly plan */}
-        {buttonValue === "Monthly" && (
+        {selectPlan === "Monthly" && (
           <div className="checkbox-container">
             <div
               className="checkbox-box"
@@ -171,7 +178,7 @@ const AddOnsComponent = (props) => {
           </div>
         )}
 
-        {buttonValue === "Yearly" && (
+        {selectPlan === "Yearly" && (
           <section className="yearly-page">
             <div className="checkbox-container">
               <div

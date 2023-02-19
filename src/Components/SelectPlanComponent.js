@@ -1,4 +1,10 @@
-import React, { useState, createContext, useContext, useEffect } from "react";
+import React, {
+  useState,
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+} from "react";
 
 import "../styles/SelectPlanComponent.css";
 
@@ -20,13 +26,13 @@ const SelectPlanComponent = (props) => {
   };
 
   /* buttonValue pass value to the Add-ons Component*/
-  const [buttonValue, setButtonValue] = useState("Monthly");
+  const [selectPlan, setSelectPlan] = useState("Monthly");
 
   const handleRightClick = () => {
     setActive(true);
     // Call function for right click (Yearly Plan)
     handleYearlyPlan();
-    setButtonValue("Yearly");
+    setSelectPlan("Yearly");
   };
 
   const handleLeftClick = () => {
@@ -34,7 +40,7 @@ const SelectPlanComponent = (props) => {
     // Call function for left click (Monthly PLan)
     handleMonthlyPlan();
 
-    setButtonValue("Monthly");
+    setSelectPlan("Monthly");
   };
 
   // Checking if button "Next Step" was pressed
@@ -43,20 +49,44 @@ const SelectPlanComponent = (props) => {
   const [show, setShow] = useState(false);
 
   const handleShow = () => {
-    if (chooseOption) {
+    if (arcadeClick || advancedClick || proClick) {
       setShow(true);
     }
   };
 
-  const [chooseOption, setChooseOption] = useState(false);
+  const [arcadeClick, setArcadeClick] = useState(false);
+  const [advancedClick, setAdvancedClick] = useState(false);
+  const [proClick, setProClick] = useState(false);
 
-  function handleClick() {
-    setChooseOption(true);
+  const [optionValue, setOptionValue] = useState("");
+
+  function handleClick2(value) {
+    console.log(value);
   }
+
+  function handleButtonClick(event) {
+    handleArcadeClick()
+    handleClick2(event.target.value);
+  }
+
+  const handleArcadeClick = () => {
+    setArcadeClick(!arcadeClick);
+    setOptionValue("Arcade");
+  };
+  const handleAdvancedClick = () => {
+    setAdvancedClick(!advancedClick);
+    setOptionValue("Advanced");
+  };
+  const handleProClick = () => {
+    setProClick(!proClick);
+    setOptionValue("Pro");
+  };
 
   return (
     <section className="select-your-plan">
-      {show && <AddOnsComponent buttonValue={buttonValue}/>}
+      {show && (
+        <AddOnsComponent selectPlan={selectPlan} handleAdvancedClick={handleAdvancedClick} handleClick2={handleClick2} />
+      )}
       {/* Next Step button set "show" to true, and if so, hide all article 
       and display Add-ons component */}
       <article style={{ display: show ? "none" : "flex" }}>
@@ -71,9 +101,9 @@ const SelectPlanComponent = (props) => {
             <article>
               <div className="options">
                 <button
-                  onClick={handleClick}
-                  value={`Arcade $${9}/mo`}
                   id="arcade-option"
+                  onClick={handleButtonClick}
+                  value="$9/mo"
                 >
                   <div className="img-container">
                     <img src={arcadeIcon}></img>
@@ -83,7 +113,11 @@ const SelectPlanComponent = (props) => {
                     <p id="price">$9/mo</p>
                   </div>
                 </button>
-                <button id="advanced-option" onClick={handleClick}>
+                <button
+                  id="advanced-option"
+                  onClick={handleAdvancedClick}
+                  value="$12/mo"
+                >
                   <div className="img-container">
                     <img src={advancedIcon}></img>
                   </div>
@@ -92,7 +126,11 @@ const SelectPlanComponent = (props) => {
                     <p id="price">$12/mo</p>
                   </div>
                 </button>
-                <button id="pro-option" onClick={handleClick}>
+                <button
+                  id="pro-option"
+                  onClick={handleProClick}
+                  value="$15/mo"
+                >
                   <div className="img-container">
                     <img src={proIcon}></img>
                   </div>
@@ -110,7 +148,7 @@ const SelectPlanComponent = (props) => {
         {plan === "yearly" && (
           <article>
             <div className="options">
-              <button id="arcade-option" onClick={handleClick}>
+              <button id="arcade-option" onClick={handleArcadeClick}>
                 <div className="img-container">
                   <img src={arcadeIcon}></img>
                 </div>
@@ -119,7 +157,7 @@ const SelectPlanComponent = (props) => {
                   <p id="price">$90/yr</p>
                 </div>
               </button>
-              <button id="advanced-option" onClick={handleClick}>
+              <button id="advanced-option" onClick={handleAdvancedClick}>
                 <div className="img-container">
                   <img src={advancedIcon}></img>
                 </div>
@@ -128,7 +166,7 @@ const SelectPlanComponent = (props) => {
                   <p id="price">$120/yr</p>
                 </div>
               </button>
-              <button id="pro-option" onClick={handleClick}>
+              <button id="pro-option" onClick={handleProClick}>
                 <div className="img-container">
                   <img src={proIcon}></img>
                 </div>
