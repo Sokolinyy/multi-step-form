@@ -116,14 +116,6 @@
   font-size: 17px;
 }
 
-#next-step-btn {
-  background-color: rgb(27, 92, 124);
-  border: none;
-  padding: 15px 30px;
-  color: white;
-  border-radius: 5px;
-}
-
 /* Monthly plan CSS */
 
 .option-price {

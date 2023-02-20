@@ -1,0 +1,82 @@
+.summary {
+  padding: 0 !important;
+  margin: 0;
+}
+
+.container {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.all-info-container {
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: 40px;
+}
+
+.selected-tariff {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+  padding: 10px 0px;
+}
+
+.chosen-plan-tariff {
+  color: rgb(27, 92, 124) !important;
+  font-weight: 700;
+  margin: 5px 0px;
+}
+
+.change-tariff-btn {
+  background-color: rgb(27, 92, 124);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 2px 5px;
+}
+
+.tariff-price {
+  color:rgb(27, 92, 124) !important;
+  font-weight: 700;
+}
+
+.selected-addons {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.total {
+  width: 90%;
+  padding: 10px 20px;
+}
+
+.total-per-month-line, .total-per-year-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-price {
+  font-size: 1.4rem;
+  color: rgb(127, 0, 201) !important;
+  font-weight: 700;
+}
+
+#confirm-btn {
+  width: 40%;
+  margin-left: auto;
+  background-color: rgb(27, 92, 124);
+  border: none;
+  padding: 15px 30px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 60px;
+}

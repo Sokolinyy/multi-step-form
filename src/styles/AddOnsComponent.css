@@ -43,17 +43,3 @@ input {
   display: flex;
   justify-content: space-between;
 }
-
-#next-step-btn {
-  background-color: rgb(27, 92, 124);
-  border: none;
-  padding: 15px 30px;
-  color: white;
-  border-radius: 5px;
-}
-
-.go-back-btn {
-  background-color: transparent;
-  border: none;
-  font-size: 17px;
-}

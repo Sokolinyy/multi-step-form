@@ -7,3 +7,30 @@ main h2 {
   color: rgb(22, 79, 107);
   font-size: 2rem;
 }
+
+#next-step-btn {
+  background-color: rgb(27, 92, 124);
+  border: none;
+  padding: 15px 30px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#next-step-btn:hover {
+  opacity: 0.9;
+}
+
+.go-back-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.15s;
+}
+
+.go-back-btn:hover {
+  background-color: black;
+  color: white;
+}

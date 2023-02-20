@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-} from "react";
+import React, { useState } from "react";
 
 import "../styles/SelectPlanComponent.css";
 
@@ -12,10 +6,12 @@ import arcadeIcon from "../images/icon-arcade.svg";
 import advancedIcon from "../images/icon-advanced.svg";
 import proIcon from "../images/icon-pro.svg";
 import AddOnsComponent from "./AddOnsComponent.js";
-import { ButtonContext } from "../ButtonContext.js";
 
 const SelectPlanComponent = (props) => {
+  // active and setActive will be change plan
+  // from monthly to yearly, and conversely
   const [active, setActive] = useState(false);
+  // Default value will be monthly
   const [plan, setPlan] = useState("monthly");
 
   const handleMonthlyPlan = () => {
@@ -25,7 +21,7 @@ const SelectPlanComponent = (props) => {
     setPlan("yearly");
   };
 
-  /* buttonValue pass value to the Add-ons Component*/
+
   const [selectPlan, setSelectPlan] = useState("Monthly");
 
   const handleRightClick = () => {
@@ -54,40 +50,45 @@ const SelectPlanComponent = (props) => {
     }
   };
 
+  // State for follow, which button was clicked
   const [arcadeClick, setArcadeClick] = useState(false);
   const [advancedClick, setAdvancedClick] = useState(false);
   const [proClick, setProClick] = useState(false);
 
+  // Option value will set name of tariff 
   const [optionValue, setOptionValue] = useState("");
 
-  function handleClick2(value) {
-    console.log(value);
-  }
-
-  function handleButtonClick(event) {
-    handleArcadeClick()
-    handleClick2(event.target.value);
-  }
+  // Set price for which tariff was chosen, 
+  // if Arcade, than price will be $9/mo and etc
+  const [price, setPrice] = useState(0)
 
   const handleArcadeClick = () => {
     setArcadeClick(!arcadeClick);
     setOptionValue("Arcade");
+    setPrice("9")
+    {plan === "yearly" && setPrice("90")}
   };
+
   const handleAdvancedClick = () => {
     setAdvancedClick(!advancedClick);
     setOptionValue("Advanced");
+    setPrice("12")
+    {plan === "yearly" && setPrice("120")}
   };
   const handleProClick = () => {
     setProClick(!proClick);
     setOptionValue("Pro");
+    setPrice("15")
+    {plan === "yearly" && setPrice("150")}
   };
 
   return (
     <section className="select-your-plan">
+      {/* If show state === true, show AddonsComponent */}
       {show && (
-        <AddOnsComponent selectPlan={selectPlan} optionValue={optionValue} />
+        <AddOnsComponent selectPlan={selectPlan} optionValue={optionValue} price={price}/>
       )}
-      {/* Next Step button set "show" to true, and if so, hide all article 
+      {/* Next Step button set "show" to true, and if so, hide all article
       and display Add-ons component */}
       <article style={{ display: show ? "none" : "flex" }}>
         <div className="description">
@@ -102,7 +103,7 @@ const SelectPlanComponent = (props) => {
               <div className="options">
                 <button
                   id="arcade-option"
-                  onClick={handleButtonClick}
+                  onClick={handleArcadeClick}
                   value="$9/mo"
                 >
                   <div className="img-container">

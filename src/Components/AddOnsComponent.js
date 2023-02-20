@@ -7,7 +7,6 @@ import "../styles/AddOnsComponent.css";
 
 const AddOnsComponent = (props) => {
   // Props from SelectPlanComponent that grab value "Yearly" or "Monthly"
-  const selectPlan = props.selectPlan;
 
   // State that changes button "Go back" from false to true
   const [goBackButton, setBackButton] = React.useState(false);
@@ -15,25 +14,70 @@ const AddOnsComponent = (props) => {
     setBackButton(true);
   };
 
-  /* For checkboxes */
+  /* For checkboxes that set name of selected tariff and price*/
+  const [addonsName1, setAddonsName1] = useState("")
+  const [addonsPrice1, setAddonsPrice1] = useState("")
+  const [addonsName2, setAddonsName2] = useState("");
+  const [addonsPrice2, setAddonsPrice2] = useState("");
+  const [addonsName3, setAddonsName3] = useState("");
+  const [addonsPrice3, setAddonsPrice3] = useState("");
+
   const [checkbox1, setCheckbox1] = useState(false);
 
   const handleCheckbox1 = () => {
     setCheckbox1(!checkbox1);
-  };
+
+    // If checkbox1 is checked, set addons name and price, depend on monthly or yearly plan
+    // ! This will work for all three checkboxes
+    if (!checkbox1) {
+      setAddonsName1("Online Services");
+      if (props.selectPlan === "Monthly") {
+        setAddonsPrice1("1");
+      } else if (props.selectPlan === "Yearly") {
+        setAddonsPrice1("10");
+      }}
+    }
 
   const [checkbox2, setCheckbox2] = useState(false);
 
   const handleCheckbox2 = () => {
     setCheckbox2(!checkbox2);
+
+    if (!checkbox2) {
+      setAddonsName2("Larger storage");
+      if (props.selectPlan === "Monthly") {
+        setAddonsPrice2("2");
+      } else if (props.selectPlan === "Yearly") {
+        setAddonsPrice2("20");
+      }}
   };
 
   const [checkbox3, setCheckbox3] = useState(false);
 
   const handleCheckbox3 = () => {
     setCheckbox3(!checkbox3);
+
+    if (!checkbox3) {
+      setAddonsName3("Customizable profile");
+      if (props.selectPlan === "Monthly") {
+        setAddonsPrice3("2");
+      } else if (props.selectPlan === "Yearly") {
+        setAddonsPrice3("20");
+      }}
   };
 
+  // Change text on "Next Step" button, if some of checkboxes was clicked
+  // set "Skip", otherwise set "Next Step"
+  useEffect(() => {
+    if (checkbox1 || checkbox2 || checkbox3) {
+      document.getElementById("next-step-btn").textContent = "Next Step"
+    }
+    else {
+      document.getElementById("next-step-btn").textContent = "Skip"
+    }
+  }, [checkbox1, checkbox2, checkbox3])
+
+  // Styles for checkboxes
   const boxStyle1 = {
     padding: "10px",
     backgroundColor: checkbox1 ? "rgba(217, 217, 252, 0.334)" : "transparent",
@@ -62,25 +106,35 @@ const AddOnsComponent = (props) => {
     setShow(true);
   };
 
-  const optionValue = props.optionValue;
-
-  useEffect(() => {
-    const nextBtn = document.getElementById("next-step-btn");
-
-    if (checkbox1 || checkbox2 || checkbox3) {
-      nextBtn.textContent = "Next Step";
-    } else {
-      nextBtn.textContent = "Skip";
-    }
-  }, [checkbox1, checkbox2, checkbox3]);
+  // Checking if checkboxes was clicked
+  const handleCheckboxChange = (event) => {
+    checkbox1(event.target.checked);
+    checkbox2(event.target.checked);
+    checkbox3(event.target.checked);
+  }
 
   return (
     <section className="add-ons-section">
-      {/* Show SummaryComponent and hide AddOnsComponent */}
+      {/* Show SummaryComponent and hide AddOnsComponent and
+       pass addons name, price, and if checkboxes was clicked to Summary component */}
       {show && (
         <SummaryComponent
-          optionValue={optionValue}
-          selectPlan={selectPlan}
+          optionValue={props.optionValue}
+          selectPlan={props.selectPlan}
+          price={props.price}
+          
+          isCheckbox1={checkbox1}
+          isCheckbox2={checkbox2}
+          isCheckbox3={checkbox3}
+
+          addonsName1={addonsName1}
+          addonsPrice1={addonsPrice1}
+
+          addonsName2={addonsName2}
+          addonsPrice2={addonsPrice2}
+
+          addonsName3={addonsName3}
+          addonsPrice3={addonsPrice3}
         />
       )}
       {/* If button "Go back" was clicked, return SelectPlanComponent */}
@@ -96,7 +150,7 @@ const AddOnsComponent = (props) => {
         {/* Display different pages (to be more precise - changing the price)
         depending on what user choose,
         at SelectPlanComponent.js - Yearly plan or Monthly plan */}
-        {selectPlan === "Monthly" && (
+        {props.selectPlan === "Monthly" && (
           <div className="checkbox-container">
             <div
               className="checkbox-box"
@@ -107,7 +161,9 @@ const AddOnsComponent = (props) => {
                 <input
                   type={"checkbox"}
                   checked={checkbox1}
-                  onChange={handleCheckbox1}
+                  onChange={handleCheckboxChange}
+                  name="Online Services"
+                  value="+$1/mo"
                 />
               </label>
               <div className="inside-checkbox">
@@ -130,7 +186,7 @@ const AddOnsComponent = (props) => {
                 <input
                   type={"checkbox"}
                   checked={checkbox2}
-                  onChange={handleCheckbox2}
+                  onChange={handleCheckboxChange}
                 />
               </label>
               <div className="inside-checkbox">
@@ -153,7 +209,7 @@ const AddOnsComponent = (props) => {
                 <input
                   type={"checkbox"}
                   checked={checkbox3}
-                  onChange={handleCheckbox3}
+                  onChange={handleCheckboxChange}
                 />
               </label>
               <div className="inside-checkbox">
@@ -178,7 +234,7 @@ const AddOnsComponent = (props) => {
           </div>
         )}
 
-        {selectPlan === "Yearly" && (
+        {props.selectPlan === "Yearly" && (
           <section className="yearly-page">
             <div className="checkbox-container">
               <div
@@ -190,7 +246,7 @@ const AddOnsComponent = (props) => {
                   <input
                     type={"checkbox"}
                     checked={checkbox1}
-                    onChange={handleCheckbox1}
+                    onChange={handleCheckboxChange}
                   />
                 </label>
                 <div className="inside-checkbox">
@@ -213,7 +269,7 @@ const AddOnsComponent = (props) => {
                   <input
                     type={"checkbox"}
                     checked={checkbox2}
-                    onChange={handleCheckbox2}
+                    onChange={handleCheckboxChange}
                   />
                 </label>
                 <div className="inside-checkbox">
@@ -236,7 +292,7 @@ const AddOnsComponent = (props) => {
                   <input
                     type={"checkbox"}
                     checked={checkbox3}
-                    onChange={handleCheckbox3}
+                    onChange={handleCheckboxChange}
                   />
                 </label>
                 <div className="inside-checkbox">
@@ -252,7 +308,7 @@ const AddOnsComponent = (props) => {
 
               <div className="next-back-button">
                 <button className="go-back-btn" onClick={handleBackClick}>
-                  Back
+                  Go Back
                 </button>
                 <button id="next-step-btn" onClick={handleShow}>
                   Next Step

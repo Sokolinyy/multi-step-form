@@ -81,7 +81,7 @@ function YourInfoComponent(props) {
               <div className="invalid-feedback">Phone number is required</div>
             )}
           </div>
-          <button type="submit">Next Step</button>
+          <button type="submit" id="next-step-btn">Next Step</button>
         </form>
       </article>
     </section>
