@@ -21,7 +21,6 @@ const SelectPlanComponent = (props) => {
     setPlan("yearly");
   };
 
-
   const [selectPlan, setSelectPlan] = useState("Monthly");
 
   const handleRightClick = () => {
@@ -55,51 +54,61 @@ const SelectPlanComponent = (props) => {
   const [advancedClick, setAdvancedClick] = useState(false);
   const [proClick, setProClick] = useState(false);
 
-  // Option value will set name of tariff 
+  // Option value will set name of tariff
   const [optionValue, setOptionValue] = useState("");
 
-  // Set price for which tariff was chosen, 
+  // Set price for which tariff was chosen,
   // if Arcade, than price will be $9/mo and etc
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState(0);
 
   const handleArcadeClick = () => {
     setArcadeClick(!arcadeClick);
     setOptionValue("Arcade");
-    setPrice("9")
-    {plan === "yearly" && setPrice("90")}
+    setPrice("9");
+    {
+      plan === "yearly" && setPrice("90");
+    }
   };
 
   const handleAdvancedClick = () => {
     setAdvancedClick(!advancedClick);
     setOptionValue("Advanced");
-    setPrice("12")
-    {plan === "yearly" && setPrice("120")}
+    setPrice("12");
+    {
+      plan === "yearly" && setPrice("120");
+    }
   };
   const handleProClick = () => {
     setProClick(!proClick);
     setOptionValue("Pro");
-    setPrice("15")
-    {plan === "yearly" && setPrice("150")}
+    setPrice("15");
+    {
+      plan === "yearly" && setPrice("150");
+    }
   };
 
   return (
     <section className="select-your-plan">
       {/* If show state === true, show AddonsComponent */}
-      {show && (
-        <AddOnsComponent selectPlan={selectPlan} optionValue={optionValue} price={price}/>
-      )}
+      {show ? (
+        <AddOnsComponent
+          selectPlan={selectPlan}
+          optionValue={optionValue}
+          price={price}
+        />
+      ) : null}
       {/* Next Step button set "show" to true, and if so, hide all article
       and display Add-ons component */}
-      <article style={{ display: show ? "none" : "flex" }}>
+      <article className="select-your-plan-box" style={{ display: show ? "none" : "flex" }}>
         <div className="description">
           <h2>Select your plan</h2>
           <p>You have the option of monthly or yearly billing.</p>
         </div>
-        <div>
+        <div className="select-plan-container">
           {/* If chosen plan is "monthly" render MonthlyPlan function
            that change price to monthly tariff */}
-          {plan === "monthly" && (
-            <article>
+          {plan === "monthly" ? (
+            <div>
               <div className="options">
                 <button
                   id="arcade-option"
@@ -127,11 +136,7 @@ const SelectPlanComponent = (props) => {
                     <p id="price">$12/mo</p>
                   </div>
                 </button>
-                <button
-                  id="pro-option"
-                  onClick={handleProClick}
-                  value="$15/mo"
-                >
+                <button id="pro-option" onClick={handleProClick} value="$15/mo">
                   <div className="img-container">
                     <img src={proIcon}></img>
                   </div>
@@ -141,13 +146,13 @@ const SelectPlanComponent = (props) => {
                   </div>
                 </button>
               </div>
-            </article>
-          )}
+            </div>
+          ) : null}
         </div>
         {/* If chosen plan is "yearly" render MonthlyPlan function
         that change price to yearly tariff*/}
-        {plan === "yearly" && (
-          <article>
+        {plan === "yearly" ? (
+          <div>
             <div className="options">
               <button id="arcade-option" onClick={handleArcadeClick}>
                 <div className="img-container">
@@ -177,8 +182,8 @@ const SelectPlanComponent = (props) => {
                 </div>
               </button>
             </div>
-          </article>
-        )}
+          </div>
+        ) : null}
 
         <div className="choose-monthly-yearly">
           <p id="choose-error"></p>

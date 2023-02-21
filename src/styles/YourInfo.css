@@ -31,7 +31,7 @@ form label {
 form input {
   margin-top: 10px;
   margin-bottom: 40px;
-  width: 100%;
+  width: 90%;
   padding: 12px;
   border-radius: 5px;
   outline: none;
@@ -49,4 +49,24 @@ form button {
   padding: 15px 30px;
   color: white;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  .your-info {
+    padding: 0;
+  }
+
+  form input {
+    width: 90%;
+    padding: 12px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid rgb(185, 185, 185);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .your-info article {
+    width: 90%;
+  }
 }

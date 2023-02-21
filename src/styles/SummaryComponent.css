@@ -80,3 +80,11 @@
   cursor: pointer;
   margin-top: 60px;
 }
+
+@media screen and (max-width: 500px) {
+  .all-info-container {
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+    margin: 0;
+  }
+}

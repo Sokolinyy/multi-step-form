@@ -4,7 +4,6 @@
 }
 
 .select-your-plan article {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -132,4 +131,40 @@
   display: flex;
   justify-content: center;
   align-items: center;  
+}
+
+@media screen and (max-width: 500px) {
+  .select-your-plan-box {
+    padding: 0 !important;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #arcade-option, #advanced-option, #pro-option {
+    margin: 0;
+    border: 2px solid rgb(207, 207, 207);
+    color: rgb(27, 92, 124);
+    background-color: transparent;
+    width: 100%;
+    margin-top: 10px;
+    height: 70px;
+    border-radius: 5px;
+    padding: 13px;
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    justify-content: start;
+    font-size: 1.2rem;
+  }
+
+  .select-plan-container {
+    width: 100%;
+  }
+
+  .img-container {
+    margin-right: 20px;
+  }
 }

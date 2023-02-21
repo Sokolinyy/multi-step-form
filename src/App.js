@@ -37,6 +37,7 @@ const App = () => {
         handleSelectPLanClick={handleSelectPLanClick}
         handleAddOnsClick={handleAddOnsClick}
         handleSummaryClick={handleSummaryClick}
+        content={content}
       />
       <UserContext.Provider value={handleAddOnsClick}>
       {content === "your-info" && (
@@ -67,6 +68,7 @@ function SelectPlan(props) {
     <SelectPlanComponent
       handleYourInfoClick={props.handleYourInfoClick}
       handleAddOnsClick={props.handleAddOnsClick}
+      content={props.content}
     />
   );
 }

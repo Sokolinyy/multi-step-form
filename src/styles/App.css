@@ -8,6 +8,11 @@ main h2 {
   font-size: 2rem;
 }
 
+article {
+  margin: 10px;
+  background-color: white;
+}
+
 #next-step-btn {
   background-color: rgb(27, 92, 124);
   border: none;
@@ -33,4 +38,30 @@ main h2 {
 .go-back-btn:hover {
   background-color: black;
   color: white;
+}
+
+@media screen and (max-width: 500px) {
+  main {
+    font-size: 1.5rem;
+  }
+
+  article {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 160px;
+    border-radius: 10px;
+    padding: 10px 10px;
+    left: 20px;
+    right: 20px
+  }
+
+  article h2 {
+    margin-bottom: 20px !important;
+  }
+
+  .description {
+    margin-bottom: 50px !important;
+    margin-left: 20px !important;
+  }
 }

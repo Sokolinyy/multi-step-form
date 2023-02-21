@@ -117,7 +117,7 @@ const AddOnsComponent = (props) => {
     <section className="add-ons-section">
       {/* Show SummaryComponent and hide AddOnsComponent and
        pass addons name, price, and if checkboxes was clicked to Summary component */}
-      {show && (
+      {show ?
         <SummaryComponent
           optionValue={props.optionValue}
           selectPlan={props.selectPlan}
@@ -136,9 +136,10 @@ const AddOnsComponent = (props) => {
           addonsName3={addonsName3}
           addonsPrice3={addonsPrice3}
         />
-      )}
+        : null
+      }
       {/* If button "Go back" was clicked, return SelectPlanComponent */}
-      {goBackButton && <SelectPlanComponent />}
+      {goBackButton ? <SelectPlanComponent /> : null}
       {/* If goBackButton was clicked, hide this component and show SelectPlanComponent */}
       <article
         style={{
