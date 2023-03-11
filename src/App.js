@@ -14,6 +14,7 @@ const App = () => {
 
   const [content, setContent] = useState("your-info");
 
+  // State for follow, what was clicked, and what render on page
   const handleYourInfoClick = () => {
     setContent("your-info");
   };
@@ -39,7 +40,7 @@ const App = () => {
         handleSummaryClick={handleSummaryClick}
         content={content}
       />
-      <UserContext.Provider value={handleAddOnsClick}>
+      {/* For render on page selected component, depend on what what equal content */}
       {content === "your-info" && (
         <YourInfo
           handleSelectPLanClick={handleSelectPLanClick}
@@ -50,13 +51,13 @@ const App = () => {
         handleAddOnsClick={handleAddOnsClick}
         />
       )}
-      </UserContext.Provider>
       {content === "add-ons" && <AddOns />}
       {content === "summary" && <Summary />}
     </main>
   );
 };
 
+// Functions, which call different component
 function YourInfo(props) {
   return (
     <YourInfoComponent handleSelectPLanClick={props.handleSelectPLanClick} />
