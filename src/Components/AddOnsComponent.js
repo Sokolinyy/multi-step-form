@@ -141,7 +141,7 @@ const AddOnsComponent = (props) => {
       {/* If button "Go back" was clicked, return SelectPlanComponent */}
       {goBackButton ? <SelectPlanComponent /> : null}
       {/* If goBackButton was clicked, hide this component and show SelectPlanComponent */}
-      <article
+      <article className="addons-container"
         style={{
           display: goBackButton ? "none" : "flex" && show ? "none" : "flex",
         }}

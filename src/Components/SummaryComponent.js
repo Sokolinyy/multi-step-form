@@ -34,19 +34,11 @@ const SummaryComponent = (props) => {
     totalPrice += parseInt(props.addonsPrice3);
   }
 
-  // State for button "Change" which send user to SelectPlanComponent
-  const [changeTariff, setChangeTariff] = React.useState(false);
-  const handleChangeTariffBtn = () => {
-    setChangeTariff(true);
-  };
-
   return (
     <article className="summary">
-      {changeTariff && <SelectPlanComponent />}
-
       {/* If button Change was clicked, hide component Summary,
        and display SelectPlanComponent */}
-      <div className="container" style={{ display: changeTariff ? "none" : "flex" }}>
+      <div className="container" >
         <div className="description">
           <h2>Finishing up</h2>
           <p>Double-check everything is looks OK before confirming</p>
@@ -55,7 +47,6 @@ const SummaryComponent = (props) => {
           <div className="selected-tariff">
             <div className="change-tariff-box">
               <p className="chosen-plan-tariff">{`${optionValue} (${selectPlan})`}</p>
-              <button onClick={handleChangeTariffBtn} className="change-tariff-btn">Change</button>
             </div>
             <div>
 
