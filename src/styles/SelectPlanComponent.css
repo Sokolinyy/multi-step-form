@@ -20,6 +20,11 @@
   margin: 0;
 }
 
+.description {
+  margin-bottom: 50px !important;
+  margin-left: 20px !important;
+}
+
 .options {
   display: flex;
 }
@@ -141,14 +146,17 @@
   .options {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   #arcade-option, #advanced-option, #pro-option {
+    display: flex;
+    align-items: center;
     margin: 0;
     border: 2px solid rgb(207, 207, 207);
     color: rgb(27, 92, 124);
     background-color: transparent;
-    width: 100%;
+    width: 90vw;
     margin-top: 10px;
     height: 70px;
     border-radius: 5px;
@@ -157,7 +165,7 @@
     flex-direction: row;
     text-align: start;
     justify-content: start;
-    font-size: 1.2rem;
+    font-size: 20px;
   }
 
   .select-plan-container {

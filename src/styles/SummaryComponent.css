@@ -82,9 +82,25 @@
 }
 
 @media screen and (max-width: 500px) {
+  .container {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container h2 {
+    text-align: center;
+  }
+
+  .summary {
+    font-size: 23px;
+  }
+
   .all-info-container {
     background-color: rgb(245, 245, 245);
     border-radius: 10px;
     margin: 0;
+    font-size: 23px;
   }
 }
